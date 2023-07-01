@@ -47,7 +47,11 @@ export class Player {
     }
 
     //input
-    this.currentState.handleInput(keys);
+    if (keys.length == 1) {
+      this.currentState.handleInput(keys);
+    } else if (keys.length > 1) {
+      this.animate = false;
+    }
   }
 
   draw(c) {

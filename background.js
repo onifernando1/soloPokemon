@@ -10,18 +10,20 @@ export class Background {
   }
 
   update(keys) {
-    //vertical movement
-    if (keys.includes("ArrowUp")) {
-      this.y--;
-    } else if (keys.includes("ArrowDown")) {
-      this.y++;
-    }
+    if (keys.length == 1) {
+      if (keys.includes("ArrowUp")) {
+        //vertical movement
+        this.y--;
+      } else if (keys.includes("ArrowDown")) {
+        this.y++;
+      }
 
-    //horizontal movement
-    if (keys.includes("ArrowLeft")) {
-      this.x--;
-    } else if (keys.includes("ArrowRight")) {
-      this.x++;
+      //horizontal movement
+      if (keys.includes("ArrowLeft")) {
+        this.x--;
+      } else if (keys.includes("ArrowRight")) {
+        this.x++;
+      }
     }
   }
 

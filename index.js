@@ -12,12 +12,7 @@ window.addEventListener("load", () => {
 
   const map1 = new Background(game);
 
-  const pikachu = new Pokemon(game);
-
-  const draw = () => {
-    // map1.draw(c);
-    pikachu.draw(c);
-  };
+  const pikachu = new Pokemon(game, 50, 46, 111);
 
   let lastTime = 0;
 
@@ -25,8 +20,9 @@ window.addEventListener("load", () => {
     const deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
     c.clearRect(0, 0, canvas1.width, canvas1.height);
-    pikachu.update(deltaTime);
-    pikachu.draw(c);
+    map1.draw(c);
+    // pikachu.update(deltaTime);
+    // pikachu.draw(c);
     requestAnimationFrame(animate);
   };
 

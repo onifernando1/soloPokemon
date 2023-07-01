@@ -10,11 +10,22 @@ export class Player {
     this.frameY = 0;
     this.maxFrame = 3;
     this.fps = 15;
-    this.frameInterval = 1000 / this.fps;
+    this.frameInterval = 2000 / this.fps;
     this.frameTimer = 0;
   }
 
-  update() {}
+  update(deltaTime) {
+    if (this.frameTimer > this.frameInterval) {
+      if (this.frameX >= this.maxFrame) {
+        this.frameX = 0;
+      } else {
+        this.frameX++;
+      }
+      this.frameTimer = 0;
+    } else {
+      this.frameTimer += deltaTime;
+    }
+  }
 
   draw(c) {
     c.drawImage(

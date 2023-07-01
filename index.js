@@ -1,6 +1,7 @@
 import Game from "./game.js";
 import { Background } from "./background.js";
 import { Pokemon } from "./pokemon.js";
+import { Player } from "./player.js";
 
 window.addEventListener("load", () => {
   const canvas1 = document.getElementById("canvas1");
@@ -9,22 +10,5 @@ window.addEventListener("load", () => {
   const c = canvas1.getContext("2d");
 
   const game = new Game(canvas1);
-
-  const map1 = new Background(game);
-
-  const pikachu = new Pokemon(game, 50, 46, 111);
-
-  let lastTime = 0;
-
-  const animate = (timeStamp) => {
-    const deltaTime = timeStamp - lastTime;
-    lastTime = timeStamp;
-    c.clearRect(0, 0, canvas1.width, canvas1.height);
-    map1.draw(c);
-    // pikachu.update(deltaTime);
-    // pikachu.draw(c);
-    requestAnimationFrame(animate);
-  };
-
-  animate(0);
+  game.animate(0);
 });

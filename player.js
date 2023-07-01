@@ -15,24 +15,21 @@ export class Player {
   }
 
   update(deltaTime) {
-    // console.log(this.game.width);
-    // console.log(this.x);
-    // console.log(this.x);
-    // if (this.frameTimer > this.frameInterval) {
-    //   if (this.frameX >= this.maxFrame) {
-    //     this.frameX = 0;
-    //   } else {
-    //     this.frameX++;
-    //   }
-    //   this.frameTimer = 0;
-    // } else {
-    //   this.frameTimer += deltaTime;
-    // }
+    if (this.frameTimer > this.frameInterval) {
+      if (this.frameX >= this.maxFrame) {
+        this.frameX = 0;
+      } else {
+        this.frameX++;
+      }
+      this.frameTimer = 0;
+    } else {
+      this.frameTimer += deltaTime;
+    }
   }
 
   draw(c) {
     c.fillStyle = "black";
-    c.strokeRect(this.x, this.y, this.width, this.height);
+    // c.strokeRect(this.x, this.y, this.width, this.height);
     c.drawImage(
       this.image,
       this.frameX * this.width,

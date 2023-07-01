@@ -19,9 +19,13 @@ window.addEventListener("load", () => {
     pikachu.draw(c);
   };
 
-  const animate = () => {
+  let lastTime = 0;
+
+  const animate = (timeStamp) => {
+    const deltaTime = timeStamp - lastTime;
+    lastTime = timeStamp;
     c.clearRect(0, 0, canvas1.width, canvas1.height);
-    pikachu.update();
+    pikachu.update(deltaTime);
     pikachu.draw(c);
     requestAnimationFrame(animate);
   };

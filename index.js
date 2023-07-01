@@ -9,6 +9,6 @@ window.addEventListener("load", () => {
   canvas1.height = 576;
   const c = canvas1.getContext("2d");
 
-  const game = new Game(canvas1);
+  const game = new Game();
   game.animate(0);
 });

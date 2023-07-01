@@ -13,6 +13,9 @@ canvas {
 
 #map1,
 #pikachu,
-#playerDown {
+#playerDown,
+#playerUp,
+#playerLeft,
+#playerRight {
   display: none;
 }

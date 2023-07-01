@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 canvas {
   /* background-color: red; */
   width: 1024px;
@@ -5,6 +9,23 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#x {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  height: 1px;
+  margin-top: 288px;
+}
+
+#y {
+  position: relative;
+  width: 1px;
+  background-color: red;
+  height: 100vh;
+  margin-left: 512px;
+  margin-top: -300px;s
 }
 
 #map1,

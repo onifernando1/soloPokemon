@@ -6,7 +6,7 @@ export default class Game {
   constructor() {
     this.canvas1 = document.getElementById("canvas1");
     this.c = canvas1.getContext("2d");
-    this.width = 1204;
+    this.width = 1024;
     this.height = 576;
     this.map1 = new Background(this);
     this.pikachu = new Pokemon(this, 50, 46, 111);

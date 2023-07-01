@@ -5,8 +5,6 @@ import {
   WalkingRight,
 } from "./playerStates.js";
 
-import { collisions } from "./collisions.js";
-
 export class Player {
   constructor(game) {
     this.game = game;

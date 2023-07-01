@@ -2,6 +2,7 @@ import { Background } from "./background.js";
 import { Pokemon } from "./pokemon.js";
 import { Player } from "./player.js";
 import { inputHandler } from "./inputHandler.js";
+import { Collisions } from "./collisions.js";
 
 export default class Game {
   constructor() {
@@ -15,6 +16,8 @@ export default class Game {
     this.lastTime = 0;
     this.deltaTime = 0;
     this.inputHandler = new inputHandler(this);
+    this.collisions = new Collisions();
+    this.collisions.collisionsMapper();
   }
 
   animate = (timeStamp) => {

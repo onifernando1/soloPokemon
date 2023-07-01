@@ -12,6 +12,8 @@ export class Player {
     this.fps = 15;
     this.frameInterval = 2000 / this.fps;
     this.frameTimer = 0;
+    this.states = [];
+    this.currentState = states[0];
   }
 
   update(deltaTime, keys) {

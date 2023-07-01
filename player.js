@@ -1,4 +1,9 @@
-import { WalkingDown, WalkingUp } from "./playerStates.js";
+import {
+  WalkingDown,
+  WalkingUp,
+  WalkingLeft,
+  WalkingRight,
+} from "./playerStates.js";
 
 export class Player {
   constructor(game) {
@@ -14,7 +19,12 @@ export class Player {
     this.fps = 15;
     this.frameInterval = 2000 / this.fps;
     this.frameTimer = 0;
-    this.states = [new WalkingDown(this.game), new WalkingUp(this.game)];
+    this.states = [
+      new WalkingDown(this.game),
+      new WalkingUp(this.game),
+      new WalkingLeft(this.game),
+      new WalkingRight(this.game),
+    ];
     this.currentState = this.states[0];
   }
 

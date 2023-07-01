@@ -30,6 +30,10 @@ export class WalkingDown extends PlayerStates {
   handleInput(keys) {
     if (keys.includes("ArrowUp")) {
       this.game.player.setState(states.WALKING_UP);
+    } else if (keys.includes("ArrowRight")) {
+      this.game.player.setState(states.WALKING_RIGHT);
+    } else if (keys.includes("ArrowLeft")) {
+      this.game.player.setState(states.WALKING_LEFT);
     }
   }
 }
@@ -43,5 +47,53 @@ export class WalkingUp extends PlayerStates {
     this.game.player.image = playerUp;
   }
 
-  handleInput() {}
+  handleInput(keys) {
+    if (keys.includes("ArrowDown")) {
+      this.game.player.setState(states.WALKING_DOWN);
+    } else if (keys.includes("ArrowRight")) {
+      this.game.player.setState(states.WALKING_RIGHT);
+    } else if (keys.includes("ArrowLeft")) {
+      this.game.player.setState(states.WALKING_LEFT);
+    }
+  }
+}
+
+export class WalkingLeft extends PlayerStates {
+  constructor(game) {
+    super("WALKING UP", game);
+  }
+
+  enter() {
+    this.game.player.image = playerLeft;
+  }
+
+  handleInput(keys) {
+    if (keys.includes("ArrowDown")) {
+      this.game.player.setState(states.WALKING_DOWN);
+    } else if (keys.includes("ArrowRight")) {
+      this.game.player.setState(states.WALKING_RIGHT);
+    } else if (keys.includes("ArrowUp")) {
+      this.game.player.setState(states.WALKING_UP);
+    }
+  }
+}
+
+export class WalkingRight extends PlayerStates {
+  constructor(game) {
+    super("WALKING UP", game);
+  }
+
+  enter() {
+    this.game.player.image = playerRight;
+  }
+
+  handleInput(keys) {
+    if (keys.includes("ArrowDown")) {
+      this.game.player.setState(states.WALKING_DOWN);
+    } else if (keys.includes("ArrowUp")) {
+      this.game.player.setState(states.WALKING_UP);
+    } else if (keys.includes("ArrowLeft")) {
+      this.game.player.setState(states.WALKING_LEFT);
+    }
+  }
 }

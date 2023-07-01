@@ -8,6 +8,7 @@ canvas {
 }
 
 #map1,
-#pikachu {
+#pikachu,
+#playerDown {
   display: none;
 }

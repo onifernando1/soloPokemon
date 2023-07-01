@@ -5,6 +5,8 @@ import {
   WalkingRight,
 } from "./playerStates.js";
 
+import { collisions } from "./collisions.js";
+
 export class Player {
   constructor(game) {
     this.game = game;
@@ -26,19 +28,22 @@ export class Player {
       new WalkingRight(this.game),
     ];
     this.currentState = this.states[0];
+    this.animate = false;
   }
 
   update(deltaTime, keys) {
     //sprite animation
-    if (this.frameTimer > this.frameInterval) {
-      if (this.frameX >= this.maxFrame) {
-        this.frameX = 0;
+    if (this.animate) {
+      if (this.frameTimer > this.frameInterval) {
+        if (this.frameX >= this.maxFrame) {
+          this.frameX = 0;
+        } else {
+          this.frameX++;
+        }
+        this.frameTimer = 0;
       } else {
-        this.frameX++;
+        this.frameTimer += deltaTime;
       }
-      this.frameTimer = 0;
-    } else {
-      this.frameTimer += deltaTime;
     }
 
     //input

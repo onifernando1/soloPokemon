@@ -8,8 +8,10 @@
     ],
     "fileStates": {
     },
+    "last.exportedFilePath": "/home/onifernando1/games/soloPokemon",
     "last.imagePath": "/home/onifernando1/games/soloPokemon/map",
     "map.height": 40,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 12,
     "map.tileWidth": 12,

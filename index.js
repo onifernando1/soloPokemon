@@ -1,5 +1,6 @@
 import Game from "./game.js";
 import { Background } from "./background.js";
+import { Pokemon } from "./pokemon.js";
 
 window.addEventListener("load", () => {
   const canvas1 = document.getElementById("canvas1");
@@ -11,9 +12,19 @@ window.addEventListener("load", () => {
 
   const map1 = new Background(game);
 
+  const pikachu = new Pokemon(game);
+
   const draw = () => {
-    map1.draw(c);
+    // map1.draw(c);
+    pikachu.draw(c);
   };
 
-  draw();
+  const animate = () => {
+    c.clearRect(0, 0, canvas1.width, canvas1.height);
+    pikachu.update();
+    pikachu.draw(c);
+    requestAnimationFrame(animate);
+  };
+
+  animate(0);
 });

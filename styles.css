@@ -1,5 +1,5 @@
 canvas {
-  background-color: red;
+  /* background-color: red; */
   width: 1024px;
   height: 576px;
   position: absolute;
@@ -7,6 +7,7 @@ canvas {
   left: 0;
 }
 
-#map1 {
+#map1,
+#pikachu {
   display: none;
 }

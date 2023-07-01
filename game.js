@@ -21,10 +21,11 @@ export default class Game {
     this.deltaTime = timeStamp - this.lastTime;
     this.lastTime = timeStamp;
     this.c.clearRect(0, 0, this.canvas1.width, this.canvas1.height);
+    this.map1.update(this.inputHandler.keys);
     this.map1.draw(this.c);
     // pikachu.update(deltaTime);
     // pikachu.draw(c);
-    this.player.update(this.deltaTime);
+    this.player.update(this.deltaTime, this.inputHandler.keys);
     this.player.draw(this.c);
     requestAnimationFrame(this.animate);
   };

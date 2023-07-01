@@ -3,10 +3,26 @@ export class inputHandler {
     this.game = game;
     this.keys = [];
     window.addEventListener("keydown", (e) => {
-      if (e.key == "ArrowUp" && this.keys.indexOf("ArrowUp") == -1) {
-        this.keys.push("ArrowUp");
+      if (
+        (e.key == "ArrowUp" ||
+          e.key == "ArrowDown" ||
+          e.key == "ArrowRight" ||
+          e.key == "ArrowLeft") &&
+        this.keys.indexOf(e.key) == -1
+      ) {
+        this.keys.push(e.key);
       }
-      console.log(this.keys);
+    });
+
+    window.addEventListener("keyup", (e) => {
+      if (
+        e.key == "ArrowUp" ||
+        e.key == "ArrowDown" ||
+        e.key == "ArrowRight" ||
+        e.key == "ArrowLeft"
+      ) {
+        this.keys.splice(e.key, 1);
+      }
     });
   }
 }

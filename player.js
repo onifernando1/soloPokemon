@@ -14,7 +14,8 @@ export class Player {
     this.frameTimer = 0;
   }
 
-  update(deltaTime) {
+  update(deltaTime, keys) {
+    //sprite animation
     if (this.frameTimer > this.frameInterval) {
       if (this.frameX >= this.maxFrame) {
         this.frameX = 0;

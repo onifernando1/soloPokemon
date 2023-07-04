@@ -1,5 +1,6 @@
 export class Collisions {
   constructor(game, offsetX, offsetY) {
+    this.boundaryHit = false;
     this.collisions = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1025, 1025, 1025, 1025,
       1025, 1025, 1025, 1025, 1025, 1025, 1025, 1025, 1025, 1025, 1025, 1025,
@@ -145,8 +146,6 @@ export class Collisions {
       this.collissionsMap.push(this.collisions.slice(i, i + 70));
     }
 
-    // this.boundaries.push(new Boundary(j * 48 - 1240, i * 48 - 630));
-
     this.collissionsMap.forEach((row, i) => {
       row.forEach((symbol, j) => {
         if (symbol == "1025")
@@ -157,15 +156,17 @@ export class Collisions {
     });
   }
 
-  checkCollision() {
-    this.boundaries.forEach((boundary) => {
+  checkCollision(boundaries) {
+    this.boundaryHit = false;
+    boundaries.forEach((boundary) => {
       if (
         boundary.x + boundary.width > this.game.player.x &&
         boundary.x < this.game.player.x + this.game.player.width &&
         boundary.y < this.game.player.y + this.game.player.height &&
         boundary.y + boundary.height > this.game.player.y
       ) {
-        console.log("collision!");
+        //collision
+        this.boundaryHit = true;
       }
     });
   }

@@ -1,5 +1,5 @@
 export class Background {
-  constructor(game, offsetX, offsetY) {
+  constructor(game, offsetX, offsetY, collisions) {
     this.game = game;
     this.canvas1 = this.game.canvas1;
     this.image = mainMap;
@@ -11,39 +11,73 @@ export class Background {
     // this.y = this.offsetY;
     this.x = 0;
     this.y = 0;
+    this.collisions = collisions;
   }
 
   update(keys) {
     this.game.player.animate = false;
+
     if (keys.length == 1) {
       if (keys.includes("ArrowUp")) {
         //vertical movement
-        this.y += 10;
-        this.game.player.animate = true;
-        this.game.collisions.boundaries.forEach((collision) => {
-          collision.y += 10;
-        });
+
+        let futureBoundaries = this.collisions.boundaries.map((boundary) => ({
+          ...boundary,
+          y: boundary.y + 5,
+        }));
+
+        this.collisions.checkCollision(futureBoundaries);
+
+        if (!this.collisions.boundaryHit) {
+          this.y += 5;
+          this.game.player.animate = true;
+          this.game.collisions.boundaries.forEach((collision) => {
+            collision.y += 5;
+          });
+        }
       } else if (keys.includes("ArrowDown")) {
-        this.y -= 10;
-        this.game.player.animate = true;
-        this.game.collisions.boundaries.forEach((collision) => {
-          collision.y -= 10;
-        });
+        let futureBoundaries = this.collisions.boundaries.map((boundary) => ({
+          ...boundary,
+          y: boundary.y - 5,
+        }));
+        this.collisions.checkCollision(futureBoundaries);
+
+        if (!this.collisions.boundaryHit) {
+          this.y -= 5;
+          this.game.player.animate = true;
+          this.game.collisions.boundaries.forEach((collision) => {
+            collision.y -= 5;
+          });
+        }
       }
 
       //horizontal movement
       if (keys.includes("ArrowLeft")) {
-        this.x += 10;
-        this.game.player.animate = true;
-        this.game.collisions.boundaries.forEach((collision) => {
-          collision.x += 10;
-        });
+        let futureBoundaries = this.collisions.boundaries.map((boundary) => ({
+          ...boundary,
+          x: boundary.x + 5,
+        }));
+        this.collisions.checkCollision(futureBoundaries);
+        if (!this.collisions.boundaryHit) {
+          this.x += 5;
+          this.game.player.animate = true;
+          this.game.collisions.boundaries.forEach((collision) => {
+            collision.x += 5;
+          });
+        }
       } else if (keys.includes("ArrowRight")) {
-        this.x -= 10;
-        this.game.player.animate = true;
-        this.game.collisions.boundaries.forEach((collision) => {
-          collision.x -= 10;
-        });
+        let futureBoundaries = this.collisions.boundaries.map((boundary) => ({
+          ...boundary,
+          x: boundary.x - 5,
+        }));
+        this.collisions.checkCollision(futureBoundaries);
+        if (!this.collisions.boundaryHit) {
+          this.x -= 5;
+          this.game.player.animate = true;
+          this.game.collisions.boundaries.forEach((collision) => {
+            collision.x -= 5;
+          });
+        }
       }
     }
   }

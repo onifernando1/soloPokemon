@@ -2,7 +2,7 @@ import { Background } from "./background.js";
 import { Pokemon } from "./pokemon.js";
 import { Player } from "./player.js";
 import { inputHandler } from "./inputHandler.js";
-import { Collisions } from "./collisions.js";
+import { Boundary, Collisions } from "./collisions.js";
 
 export default class Game {
   constructor() {
@@ -18,8 +18,12 @@ export default class Game {
     this.lastTime = 0;
     this.deltaTime = 0;
     this.inputHandler = new inputHandler(this);
-    this.collisions = new Collisions(this.offsetX, this.offsetY);
-    this.collisions.collisionsMapper();
+    this.collisions = new Collisions(this, this.offsetX, this.offsetY);
+    // this.collisions.collisionsMapper(); // a
+    this.test = new Boundary(0, 0);
+    console.log(this.test);
+    this.collisions.boundaries.push(this.test);
+    console.log(this.collisions.boundaries);
   }
 
   animate = (timeStamp) => {
@@ -35,6 +39,7 @@ export default class Game {
     this.collisions.boundaries.forEach((boundary) => {
       boundary.draw(this.c);
     });
+    this.collisions.checkCollision();
 
     requestAnimationFrame(this.animate);
   };

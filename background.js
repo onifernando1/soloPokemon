@@ -18,31 +18,31 @@ export class Background {
     if (keys.length == 1) {
       if (keys.includes("ArrowUp")) {
         //vertical movement
-        this.y++;
+        this.y += 10;
         this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
-          collision.y++;
+          collision.y += 10;
         });
       } else if (keys.includes("ArrowDown")) {
-        this.y--;
+        this.y -= 10;
         this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
-          collision.y--;
+          collision.y -= 10;
         });
       }
 
       //horizontal movement
       if (keys.includes("ArrowLeft")) {
-        this.x++;
+        this.x += 10;
         this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
-          collision.x++;
+          collision.x += 10;
         });
       } else if (keys.includes("ArrowRight")) {
-        this.x--;
+        this.x -= 10;
         this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
-          collision.x--;
+          collision.x -= 10;
         });
       }
     }

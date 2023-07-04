@@ -14,15 +14,18 @@ export class Background {
   }
 
   update(keys) {
+    this.game.player.animate = false;
     if (keys.length == 1) {
       if (keys.includes("ArrowUp")) {
         //vertical movement
         this.y++;
+        this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
           collision.y++;
         });
       } else if (keys.includes("ArrowDown")) {
         this.y--;
+        this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
           collision.y--;
         });
@@ -31,11 +34,13 @@ export class Background {
       //horizontal movement
       if (keys.includes("ArrowLeft")) {
         this.x++;
+        this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
           collision.x++;
         });
       } else if (keys.includes("ArrowRight")) {
         this.x--;
+        this.game.player.animate = true;
         this.game.collisions.boundaries.forEach((collision) => {
           collision.x--;
         });

@@ -31,24 +31,23 @@ export class Player {
 
   update(deltaTime, keys) {
     //sprite animation
-    if (this.animate) {
-      if (this.frameTimer > this.frameInterval) {
-        if (this.frameX >= this.maxFrame) {
-          this.frameX = 0;
-        } else {
+
+    if (this.frameTimer > this.frameInterval) {
+      if (this.frameX >= this.maxFrame) {
+        this.frameX = 0;
+      } else {
+        if (this.animate) {
           this.frameX++;
         }
-        this.frameTimer = 0;
-      } else {
-        this.frameTimer += deltaTime;
       }
+      this.frameTimer = 0;
+    } else {
+      this.frameTimer += deltaTime;
     }
 
     //input
     if (keys.length == 1) {
       this.currentState.handleInput(keys);
-    } else if (keys.length > 1) {
-      this.animate = false;
     }
   }
 

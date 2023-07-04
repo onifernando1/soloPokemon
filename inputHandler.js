@@ -11,7 +11,6 @@ export class inputHandler {
         this.keys.indexOf(e.key) == -1
       ) {
         this.keys.push(e.key);
-        this.game.player.animate = true;
       }
     });
 
@@ -23,7 +22,6 @@ export class inputHandler {
         e.key == "ArrowLeft"
       ) {
         this.keys.splice(e.key, 1);
-        this.game.player.animate = false;
       }
     });
   }

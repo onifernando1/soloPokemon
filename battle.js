@@ -2,7 +2,7 @@ import { Boundary } from "./collisions.js";
 
 export class Battle {
   constructor(game) {
-    this.battleZoneHit = false;
+    this.groundBattleZoneHit = false;
     this.groundBattleZones = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -152,6 +152,25 @@ export class Battle {
           );
       });
     });
+  }
+
+  checkCollision(boundaries) {
+    this.groundBattleZoneHit = false;
+    boundaries.forEach((boundary) => {
+      if (
+        boundary.x + boundary.width > this.game.player.x &&
+        boundary.x < this.game.player.x + this.game.player.width &&
+        boundary.y < this.game.player.y + this.game.player.height &&
+        boundary.y + boundary.height > this.game.player.y
+      ) {
+        //collision
+        this.groundBattleZoneHit = true;
+      }
+    });
+  }
+
+  groundBattleTime() {
+    return Math.random() > 0.99;
   }
 
   getCollisionArray() {

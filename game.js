@@ -31,6 +31,7 @@ export default class Game {
       this.offsetX,
       this.offsetY,
       this.collisions,
+      this.groundBattle,
       this.moveables
     );
     this.pikachu = new Pokemon(this, 50, 46, 111);
@@ -38,6 +39,20 @@ export default class Game {
     this.lastTime = 0;
     this.deltaTime = 0;
     this.inputHandler = new inputHandler(this);
+    this.fps = 3;
+    this.frameInterval = 10000 / this.fps;
+    this.frameTimer = 0;
+  }
+
+  battleRandomiser(deltaTime) {
+    if (this.groundBattle.groundBattleZoneHit) {
+      if (this.frameTimer > this.frameInterval) {
+        console.log("battle");
+        this.frameTimer = 0;
+      } else {
+        this.frameTimer += deltaTime;
+      }
+    }
   }
 
   animate = (timeStamp) => {
@@ -56,6 +71,7 @@ export default class Game {
     this.groundBattle.boundaries.forEach((boundary) => {
       boundary.draw(this.c);
     });
+    this.battleRandomiser(this.deltaTime);
 
     requestAnimationFrame(this.animate);
   };

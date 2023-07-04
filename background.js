@@ -1,5 +1,12 @@
 export class Background {
-  constructor(game, offsetX, offsetY, collisions, moveables) {
+  constructor(
+    game,
+    offsetX,
+    offsetY,
+    collisions,
+    groundBattleZones,
+    moveables
+  ) {
     this.game = game;
     this.canvas1 = this.game.canvas1;
     this.image = mainMap;
@@ -13,6 +20,7 @@ export class Background {
     this.y = 0;
     this.collisions = collisions;
     this.moveables = moveables;
+    this.groundBattleZones = groundBattleZones;
   }
 
   update(keys) {
@@ -29,6 +37,10 @@ export class Background {
 
         this.collisions.checkCollision(futureBoundaries);
 
+        this.groundBattleZones.checkCollision(
+          this.groundBattleZones.boundaries
+        );
+
         if (!this.collisions.boundaryHit) {
           this.y += 5;
           this.game.player.animate = true;
@@ -43,6 +55,10 @@ export class Background {
         }));
         this.collisions.checkCollision(futureBoundaries);
 
+        this.groundBattleZones.checkCollision(
+          this.groundBattleZones.boundaries
+        );
+
         if (!this.collisions.boundaryHit) {
           this.y -= 5;
           this.game.player.animate = true;
@@ -56,9 +72,13 @@ export class Background {
       if (keys.includes("ArrowLeft")) {
         let futureBoundaries = this.collisions.boundaries.map((boundary) => ({
           ...boundary,
-          x: boundary.x + 5,
+          x: boundary.x - 5,
         }));
         this.collisions.checkCollision(futureBoundaries);
+        this.groundBattleZones.checkCollision(
+          this.groundBattleZones.boundaries
+        );
+
         if (!this.collisions.boundaryHit) {
           this.x += 5;
           this.game.player.animate = true;
@@ -72,6 +92,10 @@ export class Background {
           x: boundary.x - 5,
         }));
         this.collisions.checkCollision(futureBoundaries);
+        this.groundBattleZones.checkCollision(
+          this.groundBattleZones.boundaries
+        );
+
         if (!this.collisions.boundaryHit) {
           this.x -= 5;
           this.game.player.animate = true;

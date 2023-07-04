@@ -1,5 +1,5 @@
 export class Background {
-  constructor(game, offsetX, offsetY, collisions) {
+  constructor(game, offsetX, offsetY, collisions, moveables) {
     this.game = game;
     this.canvas1 = this.game.canvas1;
     this.image = mainMap;
@@ -12,6 +12,7 @@ export class Background {
     this.x = 0;
     this.y = 0;
     this.collisions = collisions;
+    this.moveables = moveables;
   }
 
   update(keys) {
@@ -31,7 +32,7 @@ export class Background {
         if (!this.collisions.boundaryHit) {
           this.y += 5;
           this.game.player.animate = true;
-          this.game.collisions.boundaries.forEach((collision) => {
+          this.moveables.forEach((collision) => {
             collision.y += 5;
           });
         }
@@ -45,7 +46,7 @@ export class Background {
         if (!this.collisions.boundaryHit) {
           this.y -= 5;
           this.game.player.animate = true;
-          this.game.collisions.boundaries.forEach((collision) => {
+          this.moveables.forEach((collision) => {
             collision.y -= 5;
           });
         }
@@ -61,7 +62,7 @@ export class Background {
         if (!this.collisions.boundaryHit) {
           this.x += 5;
           this.game.player.animate = true;
-          this.game.collisions.boundaries.forEach((collision) => {
+          this.moveables.forEach((collision) => {
             collision.x += 5;
           });
         }
@@ -74,7 +75,7 @@ export class Background {
         if (!this.collisions.boundaryHit) {
           this.x -= 5;
           this.game.player.animate = true;
-          this.game.collisions.boundaries.forEach((collision) => {
+          this.moveables.forEach((collision) => {
             collision.x -= 5;
           });
         }

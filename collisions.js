@@ -170,6 +170,10 @@ export class Collisions {
       }
     });
   }
+
+  getCollisionArray() {
+    return this.boundaries;
+  }
 }
 
 export class Boundary {

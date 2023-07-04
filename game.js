@@ -3,6 +3,7 @@ import { Pokemon } from "./pokemon.js";
 import { Player } from "./player.js";
 import { inputHandler } from "./inputHandler.js";
 import { Boundary, Collisions } from "./collisions.js";
+import { Battle } from "./battle.js";
 
 export default class Game {
   constructor() {
@@ -14,11 +15,23 @@ export default class Game {
     this.offsetY = 800;
     this.collisions = new Collisions(this, this.offsetX, this.offsetY);
     this.collisions.collisionsMapper();
+    this.groundBattle = new Battle(this);
+    this.groundBattle.collisionsMapper(
+      this.groundBattle.groundBattleZones,
+      this.groundBattle.collisionsMap,
+      this.groundBattle.boundaries
+    );
+    this.moveables = [
+      ...this.collisions.getCollisionArray(),
+      ...this.groundBattle.getCollisionArray(),
+    ];
+
     this.mainMap = new Background(
       this,
       this.offsetX,
       this.offsetY,
-      this.collisions
+      this.collisions,
+      this.moveables
     );
     this.pikachu = new Pokemon(this, 50, 46, 111);
     this.player = new Player(this);
@@ -40,7 +53,9 @@ export default class Game {
     this.collisions.boundaries.forEach((boundary) => {
       boundary.draw(this.c);
     });
-    // this.collisions.checkCollision();
+    this.groundBattle.boundaries.forEach((boundary) => {
+      boundary.draw(this.c);
+    });
 
     requestAnimationFrame(this.animate);
   };

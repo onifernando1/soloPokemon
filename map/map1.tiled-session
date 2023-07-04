@@ -3,23 +3,46 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Collision.tsx",
     "expandedProjectPaths": [
+        "."
     ],
+    "exportAsImage.useCurrentScale": true,
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "/home/onifernando1/games/pokemonmap.tmx": {
+            "scale": 1.5539285714285713,
+            "selectedLayer": 14,
+            "viewCenter": {
+                "x": 421.5122960239026,
+                "y": 233.92323603769248
+            }
+        },
+        "Collision.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Map1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
     },
     "last.exportedFilePath": "/home/onifernando1/games/soloPokemon",
     "last.imagePath": "/home/onifernando1/games/soloPokemon/map",
     "map.height": 40,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
-    "map.lastUsedFormat": "tmx",
+    "map.lastUsedFormat": "json",
     "map.tileHeight": 12,
     "map.tileWidth": 12,
     "map.width": 70,
     "openFiles": [
+        "Map1.tsx",
+        "Collision.tsx"
     ],
     "project": "map1.tiled-project",
     "recentFiles": [
+        "Map1.tsx",
+        "Collision.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

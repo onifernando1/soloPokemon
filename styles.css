@@ -17,7 +17,9 @@ canvas {
 #playerUp,
 #playerLeft,
 #playerRight,
-#pikachuBack {
+#pikachuBack,
+#bulbasaur,
+#bulbasaurBack {
   display: none;
 }
 

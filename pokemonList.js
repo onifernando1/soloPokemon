@@ -1,5 +1,7 @@
 const pikachuImage = document.getElementById("pikachu");
 const backPikachuImage = document.getElementById("pikachuBack");
+const bulbasaurImage = document.getElementById("bulbasaur");
+const backBulbasaurImage = document.getElementById("bulbasaurBack");
 
 export const pokemonList = {
   pikachu: {
@@ -16,9 +18,9 @@ export const pokemonList = {
       maxFrame: 112,
     },
   },
-  bulbosaur: {
-    front: { height: 37, width: 38, maxFrame: 98 },
-    back: { height: 33, width: 38, maxFrame: 98 },
+  bulbasaur: {
+    front: { image: bulbasaurImage, height: 38, width: 37, maxFrame: 98 },
+    back: { image: backBulbasaurImage, height: 38, width: 33, maxFrame: 98 },
   },
   charmander: {
     front: { height: 42, width: 42, maxFrame: 106 },
@@ -26,4 +28,4 @@ export const pokemonList = {
   },
 };
 
-export const pokemonNamesList = ["pikachu"];
+export const pokemonNamesList = ["bulbasaur"];

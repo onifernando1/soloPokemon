@@ -2,6 +2,11 @@ export class Attacks {
   constructor() {
     this.attacks = {
       tackle: { name: "Tackle", damage: 20, animation: this.tackleAnimation },
+      thundershock: {
+        name: "Thunder Shock",
+        damage: 30,
+        animation: this.thunderShockAnimation,
+      },
     };
   }
 
@@ -28,8 +33,7 @@ export class Attacks {
         });
       },
     });
-
-    // gsap.to(recipient, { opacity: 0, duration: 0.3, yoyo: true, repeat: 3 });
-    // console.log(attacker.x);
   }
+
+  thunderShockAnimation(attacker, recipient) {}
 }

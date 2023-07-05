@@ -1,3 +1,7 @@
+import { Attacks } from "./attacks.js";
+
+const attacks = new Attacks();
+
 const pikachuImage = document.getElementById("pikachu");
 const backPikachuImage = document.getElementById("pikachuBack");
 const bulbasaurImage = document.getElementById("bulbasaur");
@@ -17,6 +21,7 @@ export const pokemonList = {
       width: 41,
       maxFrame: 112,
     },
+    attacks: [attacks.attacks.tackle],
   },
   bulbasaur: {
     front: { image: bulbasaurImage, height: 38, width: 37, maxFrame: 98 },
@@ -28,4 +33,4 @@ export const pokemonList = {
   },
 };
 
-export const pokemonNamesList = ["bulbasaur"];
+export const pokemonNamesList = ["pikachu"];

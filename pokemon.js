@@ -15,6 +15,7 @@ export class Pokemon {
     this.name = name;
     this.displayWidth = this.width * 2;
     this.displayHeight = this.height * 2;
+    this.attacks = [];
   }
 
   setDetails(image, width, height, maxFrame) {
@@ -36,7 +37,6 @@ export class Pokemon {
   }
 
   draw(c) {
-    console.log(`in draw ${this.image}`);
     c.drawImage(
       this.image,
       this.frameX * this.width,

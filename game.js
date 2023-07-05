@@ -4,6 +4,7 @@ import { Player } from "./player.js";
 import { inputHandler } from "./inputHandler.js";
 import { Boundary, Collisions } from "./collisions.js";
 import { Battle } from "./battle.js";
+import { BattleAnimation } from "./battleAnimation.js";
 
 export default class Game {
   constructor() {
@@ -42,12 +43,16 @@ export default class Game {
     this.fps = 3;
     this.frameInterval = 10000 / this.fps;
     this.frameTimer = 0;
+    this.battleScene = false;
+    this.battleAnimation = new BattleAnimation(this);
   }
 
   battleRandomiser(deltaTime) {
+    this.battleScene = false;
     if (this.groundBattle.groundBattleZoneHit) {
       if (this.frameTimer > this.frameInterval) {
         console.log("battle");
+        this.battleScene = true;
         this.frameTimer = 0;
       } else {
         this.frameTimer += deltaTime;
@@ -72,6 +77,11 @@ export default class Game {
       boundary.draw(this.c);
     });
     this.battleRandomiser(this.deltaTime);
+
+    if (this.battleScene) {
+      // trigger battle
+      this.battleAnimation.animate();
+    }
 
     requestAnimationFrame(this.animate);
   };

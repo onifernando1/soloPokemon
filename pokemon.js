@@ -16,6 +16,7 @@ export class Pokemon {
     this.displayWidth = this.width * 2;
     this.displayHeight = this.height * 2;
     this.attacks = [];
+    this.opacity = 1;
   }
 
   setDetails(image, width, height, maxFrame) {
@@ -37,6 +38,9 @@ export class Pokemon {
   }
 
   draw(c) {
+    c.save();
+    c.globalAlpha = this.opacity;
+
     c.drawImage(
       this.image,
       this.frameX * this.width,
@@ -48,5 +52,6 @@ export class Pokemon {
       this.displayWidth,
       this.displayHeight
     );
+    c.restore();
   }
 }

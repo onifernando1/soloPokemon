@@ -13,6 +13,7 @@ export class BattleAnimation {
     this.deltaTime = 0;
     this.lastTime = 0;
     this.findPokemon();
+    this.changePokemonImage();
 
     this.generateWildPokemon();
     this.attacks = new Attacks();
@@ -56,8 +57,10 @@ export class BattleAnimation {
     const attack1 = document.getElementById("attack1");
     attack1.innerHTML = this.playerPokemonInfo.attacks[0].name;
     attack1.addEventListener("click", () => {
-      console.log("boo");
-      this.playerPokemonInfo.attacks[0].animation();
+      this.playerPokemonInfo.attacks[0].animation(
+        this.playerPokemon,
+        this.wildPokemon
+      );
     });
   }
 
@@ -67,7 +70,6 @@ export class BattleAnimation {
     document.getElementById("transitionScreen").style.opacity = "0";
     this.c.clearRect(0, 0, this.game.width, this.game.height);
     this.c.drawImage(battleScene, 0, 0, this.game.width, this.game.height);
-    this.changePokemonImage();
     this.playerPokemon.update(this.deltaTime);
     this.playerPokemon.draw(this.c);
     this.wildPokemon.update(this.deltaTime);

@@ -5,8 +5,8 @@ export const pokemonList = {
   pikachu: {
     front: {
       image: pikachuImage,
-      height: 50,
-      width: 46,
+      height: 46,
+      width: 50,
       maxFrame: 111,
     },
     back: {

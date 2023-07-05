@@ -34,7 +34,6 @@ export class BattleAnimation {
     this.wildPokemon = wildP;
     this.wildPokemon.x = 800;
     this.wildPokemon.y = 100;
-    console.log(this.wildPokemon);
   }
 
   changePokemonImage() {
@@ -55,7 +54,6 @@ export class BattleAnimation {
     this.c.clearRect(0, 0, this.game.width, this.game.height);
     this.c.drawImage(battleScene, 0, 0, this.game.width, this.game.height);
     this.findPokemon();
-    // this.c.drawImage(this.playerPokemonInfo.image, 0, 0);
     this.changePokemonImage();
     this.playerPokemon.update(this.deltaTime);
     this.playerPokemon.draw(this.c);

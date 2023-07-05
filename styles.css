@@ -19,3 +19,13 @@ canvas {
 #playerRight {
   display: none;
 }
+
+#transitionScreen {
+  background-color: black;
+  position: absolute;
+  width: 1024px;
+  height: 576px;
+
+  top: 0;
+  left: 0;
+}

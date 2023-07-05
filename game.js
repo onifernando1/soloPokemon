@@ -5,6 +5,7 @@ import { inputHandler } from "./inputHandler.js";
 import { Boundary, Collisions } from "./collisions.js";
 import { Battle } from "./battle.js";
 import { BattleAnimation } from "./battleAnimation.js";
+import { pokemonList } from "./pokemonList.js";
 
 export default class Game {
   constructor() {
@@ -35,7 +36,14 @@ export default class Game {
       this.groundBattle,
       this.moveables
     );
-    this.pikachu = new Pokemon(this, 50, 46, 111);
+    this.pikachu = new Pokemon(this, 50, 46, 111, "pikachu");
+    this.pikachu.setDetails(
+      pokemonList.pikachu.back.image,
+      pokemonList.pikachu.back.width,
+      pokemonList.pikachu.back.height,
+      pokemonList.pikachu.back.maxFrame
+    );
+    console.log(pokemonList.pikachu.back.width);
     this.player = new Player(this);
     this.lastTime = 0;
     this.deltaTime = 0;
@@ -61,6 +69,7 @@ export default class Game {
   }
 
   animate = (timeStamp) => {
+    if (this.battleScene) return;
     this.deltaTime = timeStamp - this.lastTime;
     this.lastTime = timeStamp;
     this.c.clearRect(0, 0, this.canvas1.width, this.canvas1.height);
@@ -80,7 +89,20 @@ export default class Game {
 
     if (this.battleScene) {
       // trigger battle
-      this.battleAnimation.animate();
+
+      gsap.to("#transitionScreen", {
+        opacity: 1,
+        repeat: 4,
+        yoyo: true,
+        duration: 0.4,
+        onComplete: () => {
+          gsap.to("#transitionScreen", {
+            opacity: 1,
+            duration: 0.4,
+          });
+          this.battleAnimation.animate(0);
+        },
+      });
     }
 
     requestAnimationFrame(this.animate);

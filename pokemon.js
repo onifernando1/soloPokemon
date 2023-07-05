@@ -1,5 +1,5 @@
 export class Pokemon {
-  constructor(game, width, height, maxFrame) {
+  constructor(game, width, height, maxFrame, name) {
     this.game = game;
     this.image = pikachu;
     this.width = width;
@@ -12,6 +12,14 @@ export class Pokemon {
     this.fps = 15;
     this.frameInterval = 1000 / this.fps;
     this.frameTimer = 0;
+    this.name = name;
+    this.displayWidth = this.width * 2;
+    this.displayHeight = this.height * 2;
+  }
+
+  setDetails(image, width, height, maxFrame) {
+    (this.image = image), (this.width = width);
+    (this.height = height), (this.maxFrame = maxFrame);
   }
 
   update(deltaTime) {
@@ -36,8 +44,8 @@ export class Pokemon {
       this.height,
       this.x,
       this.y,
-      this.width,
-      this.height
+      this.displayWidth,
+      this.displayHeight
     );
   }
 }

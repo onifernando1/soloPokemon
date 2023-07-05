@@ -16,7 +16,8 @@ canvas {
 #playerDown,
 #playerUp,
 #playerLeft,
-#playerRight {
+#playerRight,
+#pikachuBack {
   display: none;
 }
 
@@ -25,7 +26,7 @@ canvas {
   position: absolute;
   width: 1024px;
   height: 576px;
-
   top: 0;
   left: 0;
+  opacity: 0;
 }

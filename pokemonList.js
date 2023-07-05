@@ -1,13 +1,18 @@
+const pikachuImage = document.getElementById("pikachu");
+const backPikachuImage = document.getElementById("pikachuBack");
+
 export const pokemonList = {
   pikachu: {
     front: {
+      image: pikachuImage,
       height: 50,
       width: 46,
       maxFrame: 111,
     },
     back: {
-      height: 41,
-      width: 47,
+      image: backPikachuImage,
+      height: 47,
+      width: 41,
       maxFrame: 112,
     },
     bublosaur: {

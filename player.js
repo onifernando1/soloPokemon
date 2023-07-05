@@ -5,6 +5,8 @@ import {
   WalkingRight,
 } from "./playerStates.js";
 
+import { Pokemon } from "./pokemon.js";
+
 export class Player {
   constructor(game) {
     this.game = game;
@@ -27,6 +29,9 @@ export class Player {
     ];
     this.currentState = this.states[0];
     this.animate = false;
+    this.pikachu = new Pokemon(this, 50, 46, 111, "pikachu");
+    this.pokemon = [this.pikachu];
+    this.currentPokemon = this.pokemon[0];
   }
 
   update(deltaTime, keys) {

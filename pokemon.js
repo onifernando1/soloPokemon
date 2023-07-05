@@ -1,7 +1,7 @@
 export class Pokemon {
-  constructor(game, width, height, maxFrame, name) {
+  constructor(game, width, height, maxFrame, name, image) {
     this.game = game;
-    this.image = pikachu;
+    this.image = image;
     this.width = width;
     this.height = height;
     this.x = 10;
@@ -36,6 +36,7 @@ export class Pokemon {
   }
 
   draw(c) {
+    console.log(`in draw ${this.image}`);
     c.drawImage(
       this.image,
       this.frameX * this.width,

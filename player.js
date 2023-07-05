@@ -29,7 +29,7 @@ export class Player {
     ];
     this.currentState = this.states[0];
     this.animate = false;
-    this.pikachu = new Pokemon(this, 50, 46, 111, "pikachu");
+    this.pikachu = new Pokemon(this, 50, 46, 111, "pikachu", pikachu);
     this.pokemon = [this.pikachu];
     this.currentPokemon = this.pokemon[0];
   }
